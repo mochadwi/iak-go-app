@@ -47,15 +47,25 @@ public class MainActivity extends AppCompatActivity {
     public void cash(View v) {
         distance = Double.parseDouble(edtDistance.getText().toString());
         tips = Double.parseDouble(edtTips.getText().toString());
-        totalPrice = initialPrice * distance + tips;
+        double grossPrice = initialPrice * distance;
+        double modulus = grossPrice % 100;
+        double floor = modulus != 0 ? (100 - modulus) : 0;
+        double fixedPrice = grossPrice + floor;
+        totalPrice = fixedPrice + tips;
+        edtPrice.setText(Double.toString(fixedPrice));
         txtTotalPrice.setText("Rp. " + Double.toString(totalPrice));
     }
 
     public void voucher(View v) {
         distance = Double.parseDouble(edtDistance.getText().toString());
         tips = Double.parseDouble(edtTips.getText().toString());
-        discount = ((initialPrice * distance) * 0.05);
-        totalPrice = (initialPrice * distance) + tips - discount;
+        double grossPrice = initialPrice * distance;
+        double modulus = grossPrice % 100;
+        double floor = modulus != 0 ? (100 - modulus) : 0;
+        double fixedPrice = grossPrice + floor;
+        discount = fixedPrice * 0.05;
+        totalPrice = fixedPrice + tips - discount;
+        edtPrice.setText(Double.toString(fixedPrice));
         txtTotalPrice.setText("Rp. " + Double.toString(totalPrice));
     }
 }
