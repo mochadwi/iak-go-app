@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Part3LastProject</string>
+    <string name="str_distance">Distance</string>
+    <string name="str_price">Price</string>
+    <string name="str_tips">Tips</string>
+    <string name="str_tunai">Tunai</string>
+    <string name="str_voucher">Voucher</string>
+</resources>
