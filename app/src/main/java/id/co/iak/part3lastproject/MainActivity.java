@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     // Const
 //    private final static int multiply = 100;
 
-    // Data
+    // Global Data
     private double distance = 0.0;
     private double initialPrice = 3000.0;
     private double tips = 0.0;
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        // init
         edtDistance = (EditText) findViewById(R.id.edt_distance);
         edtPrice = (EditText) findViewById(R.id.edt_price);
         edtTips = (EditText) findViewById(R.id.edt_tips);
@@ -40,32 +41,42 @@ public class MainActivity extends AppCompatActivity {
 
         // default value
         edtDistance.setText(Double.toString(distance));
-        edtPrice.setText(Double.toString(initialPrice));
+        edtPrice.setText("Rp. " + Double.toString(initialPrice));
         edtTips.setText(Double.toString(tips));
     }
 
     public void cash(View v) {
+        // get value
         distance = Double.parseDouble(edtDistance.getText().toString());
         tips = Double.parseDouble(edtTips.getText().toString());
+
+        // calculate
         double grossPrice = initialPrice * distance;
         double modulus = grossPrice % 100;
         double floor = modulus != 0 ? (100 - modulus) : 0;
         double fixedPrice = grossPrice + floor;
         totalPrice = fixedPrice + tips;
-        edtPrice.setText(Double.toString(fixedPrice));
+
+        // display
+        edtPrice.setText("Rp. " + Double.toString(fixedPrice));
         txtTotalPrice.setText("Rp. " + Double.toString(totalPrice));
     }
 
     public void voucher(View v) {
+        // get value
         distance = Double.parseDouble(edtDistance.getText().toString());
         tips = Double.parseDouble(edtTips.getText().toString());
+
+        // calculate
         double grossPrice = initialPrice * distance;
         double modulus = grossPrice % 100;
         double floor = modulus != 0 ? (100 - modulus) : 0;
         double fixedPrice = grossPrice + floor;
         discount = fixedPrice * 0.05;
         totalPrice = fixedPrice + tips - discount;
-        edtPrice.setText(Double.toString(fixedPrice));
+
+        // display
+        edtPrice.setText("Rp. " + Double.toString(fixedPrice));
         txtTotalPrice.setText("Rp. " + Double.toString(totalPrice));
     }
 }
