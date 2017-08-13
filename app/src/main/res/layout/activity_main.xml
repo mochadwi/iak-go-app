@@ -94,6 +94,6 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/ll_wrapper_btn"
         android:gravity="center"
-        android:text="Rp. 3000,00"
+        android:text="Rp. 0"
         android:textSize="32sp" />
 </RelativeLayout>
